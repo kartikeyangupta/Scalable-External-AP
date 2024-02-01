@@ -1,0 +1,15 @@
+{% extends 'layouts/main.html' %}
+{% block title %}PDF Files{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h1>PDF Files</h1>
+  </div>
+<p class="lead">Files Uploaded in the Application</p>
+<ul>
+  {% for content_item in files %}
+  <li> {{ content_item }} </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
