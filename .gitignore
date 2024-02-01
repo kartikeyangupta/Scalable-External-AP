@@ -1,0 +1,5 @@
+.testenv
+.flaskenv
+.djangoenv
+.goenv
+.env
