@@ -6,10 +6,18 @@
   <h1>PDF Files</h1>
   </div>
 <p class="lead">Files Uploaded in the Application</p>
-<ul>
+<!-- <ul>
   {% for content_item in files %}
   <li> {{ content_item }} </li>
   {% endfor %}
-</ul>
+</ul> -->
+<table>
+  {% for item in files %}
+  <TR>
+     <TD class="c1"><a href={{ item.url }} >{{item.name}}</a></TD>
+     <TD class="c2">{{item.time_stamp}}</TD> 
+  </TR>
+  {% endfor %}
+  </table>
 
 {% endblock %}

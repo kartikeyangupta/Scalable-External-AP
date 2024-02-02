@@ -19,5 +19,39 @@
 4. RDS Aurora Postgres database
 
 
+## Why Flask for API Rest Framework
+
+Even though Django is older and has a slightly more extensive community, Flask has its strengths. From the ground up, Flask was built with scalability and simplicity. Flask applications are known for being lightweight, mainly compared to their Django counterparts. Flask developers call it a microframework, where micro means that the goal is to keep the core simple but extensible. Flask won't make many decisions for us, such as what database to use or what template engine to choose. Lastly, Flask has extensive documentation that addresses everything developers need to start. FastAPI follows a similar "micro" approach to Flask, though it provides more tools like automatic Swagger UI and is an excellent choice for APIs. However, as it is a newer framework, many more resources and libraries are compatible with frameworks like Django and Flask but not with FastAPI.
+
+
+## System Design Diagram
+
+Components
+1. Flask App
+2. Celery (Asynchronous Tasks)
+3. Caching system (Redis)
+4. 
+
+
+## Docker commands:
+1. Redis
+```
+# Run Redis Container
+docker run -d --name redis-stack-server -p 6379:6379 redis/redis-stack-server:latest
+
+# run redis cli
+docker exec -it redis-stack redis-cli
+```
+
+2. Postgresql
+```
+
+```
+
+3. Run Celery
+```
+celery -A make_celery.celery worker --loglevel=info
+```
+
 ## Author
 1.  kartikeyangupta
