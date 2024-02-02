@@ -26,32 +26,54 @@ Even though Django is older and has a slightly more extensive community, Flask h
 
 ## System Design Diagram
 
-Components
+Components:
 1. Flask App
 2. Celery (Asynchronous Tasks)
 3. Caching system (Redis)
-4. 
+4. MySQL database
+5. AWS Textarct
+6. S3 Bucket
+
+### Current Architecture
+
+![Index](./flask-backend-application/screenshots/current-architecture.jpeg)
+
+### Proposed with enhancements
+![Index](./flask-backend-application/screenshots/new-architecture.jpeg)
 
 
-## Docker commands:
-1. Redis
-```
-# Run Redis Container
-docker run -d --name redis-stack-server -p 6379:6379 redis/redis-stack-server:latest
 
-# run redis cli
-docker exec -it redis-stack redis-cli
-```
+## ScreenShots
+1. Index
+![Index](./flask-backend-application/screenshots/index.png)
 
-2. Postgresql
-```
+2. Add PDF Form
+![Add1](./flask-backend-application/screenshots/add1.png)
+![Add2](./flask-backend-application/screenshots/add2.png)
+![Add3](./flask-backend-application/screenshots/add3.png)
 
-```
+3. Celery Logs after uploading
+![Celery-logs](./flask-backend-application/screenshots/celery-logs.png)
 
-3. Run Celery
-```
-celery -A make_celery.celery worker --loglevel=info
-```
+4. Index after uploading pdf in S3.
+![index2](./flask-backend-application/screenshots/index-after-s3-update.png)
+
+5. Index after uploading pdf in S3.
+![s3-bucket](./flask-backend-application/screenshots/s3-bucket.png)
+
+6. Extracted text from PDF
+![s3-bucket](./flask-backend-application/screenshots/extracted-text-from-PDF.png)
+
+## Things to Update in the Application
+1. Add Validation on form and serializers on Rest.
+2. Use SQS instead of Celery, celery importing with flask is complex and cumbersome.
+3. Instead of writing a backend API to fetch text from PDF, Setup a AWS lamda that would automatically trigger everytime PDF gets uploaded in S3 Bucket.
+4. Connect AWS Postgresql with the app, instead of file based SQL.
+5. Write Unit test case and achieve atleast 80% of coverage.
+6. Run Performance Testing using Locust.io
+7. Deploy application using AWS Elastic Beanstalk.
+8. Add logging, cloudwatch healthchecks, monitoring and alerting.
+
 
 ## Author
 1.  kartikeyangupta
