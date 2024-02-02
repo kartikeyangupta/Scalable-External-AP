@@ -43,6 +43,7 @@ def upload_pdf_to_s3(file_path, file_name):
             result = textract_client.get_document_text_detection(JobId=response['JobId'])        
             text_results = [item['Text'] for item in result['Blocks'] if item['BlockType'] == 'LINE']
             extracted_text = '\n'.join(text_results)
+            print(extracted_text)
             file_id = File.query.filter_by(name=file_name)
             new_content = Content(content=extracted_text, file_id=file_id)
             db.session.add(new_content)

@@ -29,7 +29,7 @@ def index():
 def get_pdf_content(id):
     # Method to get all files in our server
     if request.method == "GET":
-        content = Content.query.filter_by(file_id=id)
+        content = Content.query.filter_by(file_id=id)[0]
         file = File.query.filter_by(id=id).all()[0]
         return render_template('pages/placeholder.content.html', 
                                 file_name = file.name, 
