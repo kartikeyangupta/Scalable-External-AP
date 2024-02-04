@@ -1,5 +1,7 @@
 .testenv
 .flaskenv
+.django
 .djangoenv
 .goenv
 .env
+.*/__pycache__
