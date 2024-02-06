@@ -6,7 +6,7 @@ from django.conf import settings
 from .tasks import upload_pdf_to_s3
 
 def index(request):
-    pdf_files = get_list_or_404(PDF_File)
+    pdf_files = PDF_File.objects.all()
     return render(request, "pdf/index.html", {'data': pdf_files})
 
 def uploadpdf(request):
@@ -22,7 +22,6 @@ def uploadpdf(request):
             with open(f'{settings.FILE_LOCATION}/{file_name}-{file_model.timestamp}.pdf', "wb+") as destination:
                 for chunk in pdf_file.chunks():
                     destination.write(chunk)
-            print(settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY)
             upload_pdf_to_s3.delay(file_model.name, file_model.timestamp)
             return HttpResponseRedirect('/pdf')
         else:
