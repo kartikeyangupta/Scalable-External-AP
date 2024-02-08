@@ -1,0 +1,8 @@
+.testenv
+.flaskenv
+.django
+.djangoenv
+.goenv
+.env
+__pycache__/
+db.sqlite3

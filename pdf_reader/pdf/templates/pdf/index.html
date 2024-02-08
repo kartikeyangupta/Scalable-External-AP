@@ -1,0 +1,17 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Upload PDF{% endblock %}
+{% block content %}
+
+<div class="page-header">
+    <h1> PDF Bank </h1>
+</div>
+
+<p class="lead">Files Uploaded in the Application</p>
+
+    <ul>
+    {% for file in data %}
+        <li> <a href={{file.id}}>{{ file.name }} </a>&nbsp;&nbsp; {{ file.timestamp }} </li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}

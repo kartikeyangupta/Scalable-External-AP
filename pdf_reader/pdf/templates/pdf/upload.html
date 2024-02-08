@@ -1,0 +1,13 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Upload PDF{% endblock %}
+{% block content %}
+
+<h3 class="form-heading"> Upload PDF <a href="/upload" title="Check Pdfs"><i class="fa fa-home pull-right"></i></a></h3>
+<form action="/pdf/add" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="file">Choose a PDF file:</label>
+    {{ form.file_name }}
+    <br>
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}
